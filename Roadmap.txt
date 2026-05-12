@@ -1,0 +1,67 @@
+Detailed Project Roadmap: Text-Based Quantitative Linguistic Analysis
+
+Current Status: 🟢 Phase I (Foundation) - Completing Bilingual Anchor Extraction
+
+Phase I: Foundation & Data Synthesis
+
+Goal: Prepare the linguistic building blocks (The "Anchors").
+
+[x] Environment Setup: Conda llm-env configured with PyTorch and Sentence-Transformers.
+
+[x] Hindi Extraction: Successfully pulled 1.14M Hindi sentences and clustered them into 4 contexts.
+
+[~] Telugu Extraction: Running process_custom_data.py with TELUGU_COL_INDEX = 1 to extract and cluster the parallel Telugu sentences.
+
+[~] English Acquisition: Fetching 20,000 sentences of pure English via the fetch_english_data() function to complete the 3rd linguistic anchor.
+
+Phase II: Core Engine (The Geometric Compass)
+
+Goal: Convert text into high-dimensional reference vectors.
+
+Action: Run baseline_generator.py.
+
+Task 1: Vectorize the 4 Hindi contexts, 4 Telugu contexts, and 1 English global corpus.
+
+Task 2: Compute the Mean Vector ($\vec{B}_{L}$) for each.
+
+Task 3: Perform Unit Normalization to ensure all vectors have a magnitude of 1.0 (critical for Cosine Similarity).
+
+Deliverable: A data/baselines/ folder filled with .pt files (the mathematical "essence" of each language).
+
+Phase III: Pipeline Implementation
+
+Goal: Build the logic that compares user input to the anchors.
+
+Action: Finalize text_quantifier.py.
+
+Task 1: Implement the quantify() function to vectorize typed input in real-time.
+
+Task 2: Calculate Cosine Similarity between the input vector ($\vec{U}$) and all available baselines ($B_{L}$).
+
+Task 3: Context-Matching logic: Automatically select the best context baseline based on the input's semantic neighborhood.
+
+Phase IV: Calibration & Metric Tuning
+
+Goal: Align mathematical output with human linguistic intuition.
+
+Task 1: Create a "Calibration Set" of 50-100 sentences with human-assigned percentages (e.g., "70% Hindi, 30% English").
+
+Task 2: Tune the Softmax Temperature ($\tau$).
+
+Lower $\tau$: Makes the model "sharper" (pushes results toward 100% of one language).
+
+Higher $\tau$: Makes the model "softer" (reflects a more even blend).
+
+Task 3: Error Analysis: Identify if specific loanwords (like "charging") are skewing the results too far toward English.
+
+Phase V: Deployment & User Interface
+
+Goal: Create a functional tool for testing and sharing.
+
+Task 1: Build a simple Streamlit/Gradio Dashboard.
+
+Task 2: Input: Text Area for typing code-mixed sentences.
+
+Task 3: Output: Dynamic Bar Charts or Donut Charts showing the linguistic composition.
+
+Task 4: Final Report: Document the correlation between the Vector-Based approach and traditional Token-Counting methods.
