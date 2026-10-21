@@ -1,3 +1,13 @@
+---
+title: Geometric Linguistic Quantifier
+emoji: 🌐
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+app_file: web_quantifier.py
+pinned: false
+---
+
 # Geometric Linguistic Quantifier (GLQ)
 
 The **Geometric Linguistic Quantifier** is an advanced NLP tool designed to analyze and quantify code-mixed text (e.g., text that mixes English, Hindi, and Telugu). Instead of traditional token counting, it uses deep learning (`Sentence-Transformers` and `PyTorch`) to convert sentences into high-dimensional geometric vectors and calculates the exact linguistic composition based on cosine similarity and contrast-enhanced softmax calibration.
